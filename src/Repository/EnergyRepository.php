@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Energy;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Energy|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,32 +20,10 @@ class EnergyRepository extends ServiceEntityRepository
         parent::__construct($registry, Energy::class);
     }
 
-    // /**
-    //  * @return Energy[] Returns an array of Energy objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAll() : array
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+                ->getQuery()
+                ->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Energy
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

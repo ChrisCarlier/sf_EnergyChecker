@@ -1,6 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block title 'Données' %}
-
 {% block body %}
+    <div class="container mt-4">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Année</th>
+                    <th>Mois</th>
+                    <th>Elect. Jour</th>
+                    <th>Elect. Nuit</th>
+                    <th>Gaz</th>
+                    <th>Eau</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ener in tableau_energies %}
+                    <tr>
+                        <td>{{ ener.year }}</td>
+                        <td>{{ ener.month }}</td>
+                        <td>{{ ener.electricityDay }}</td>
+                        <td>{{ ener.electricityNight }}</td>
+                        <td>{{ ener.gaz }}</td>
+                        <td>{{ ener.water }}</td>
+                        <td>
+                            <a href="{{ path('energy.edit', {id: ener.id}) }}" class="btn btn-info">Modifier</a>
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ path('energy.delete', {id: ener.id}) }}" onsubmit="return confirm('Supprimer ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-right">
+            <a href="{{ path('energy.new') }}" class="btn btn-primary">Nouveau</a>
+        </div>
+    </div>
 {% endblock %}

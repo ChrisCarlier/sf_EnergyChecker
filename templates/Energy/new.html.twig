@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Nouveau relevé' %}
+
+{% block body %}
+<div class="container">
+    <h1>Nouveau relevé</h1>
+    {{ include('energy/_form.html.twig', {form: form, button:"Ajouter"}) }}
+</div>
+{% endblock %}
