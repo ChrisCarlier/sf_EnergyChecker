@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Entity\Energy;
 use App\Form\EnergyType;
 use App\Repository\EnergyRepository;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,22 +29,23 @@ class EnergyController extends AbstractController{
     }
 
     /**
-     * @Route("/Energy", name="energy.index")
-     * @return
+     * @Route("/EnergyData", name="energy.index")
+     * @return Response
      */
-    public function index(){
-
-        $tabenergies = $this->repository->findAll();
-
+    public function index()
+    {
         return $this->render('/Energy/energy.html.twig',[
             'current_menu' => 'energies',
-            'tableau_energies' => $tabenergies
+            'tableau_energies' => $this->repository->findBy([
+                'year' => 2019
+            ])
         ]);
     }
 
     /**
      * @Route("/Energy/create", name="energy.new", methods="GET|POST")
-     * @return
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function new(Request $request){
         $energy = new Energy();
@@ -64,7 +66,9 @@ class EnergyController extends AbstractController{
 
     /**
      * @Route("/Energy/{id}", name="energy.edit", methods="GET|POST")
-     * @return
+     * @param Energy $energy
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function edit(Energy $energy, Request $request)
     {
@@ -81,16 +85,21 @@ class EnergyController extends AbstractController{
             'form' => $form->createView()
         ]);
     }
-    
+
     /**
      * @Route("/Energy/{id}", name="energy.delete", methods="DELETE")
-     * @return
+     * @param Energy $energy
+     * @return Response
      */
     public function delete(Energy $energy)
     {
         $this->em->remove($energy);
         $this->em->flush();
-        return new Response('suppression');
+        $tabenergies = $this->getAllEnergies();
+        return $this->render('/Energy/energy.html.twig',[
+            'current_menu' => 'energies',
+            'tableau_energies' => $tabenergies
+        ]);
     }
 
 }

@@ -3,11 +3,63 @@
 {% block title 'Energy Checker' %}
 
 {% block body %}
-<div class="jumbotron text-center">
-    <h1>Energy Checker</h1>
+<div class="text-center">
+    <h1
+    style="
+    margin:2rem;
+    background-color: #384256;
+    color:white;
+    "
+    >Energy Checker</h1>
 </div>
 
 <div class="container">
-    
+
+    <div style="
+    background-color: #03162E;
+    border-bottom:solid #004D87;
+    border-right:solid #004D87;
+    /*box-shadow: 10px 10px 10px 2px #384256;*/
+    border-radius: 8px;
+    padding:1rem;
+    margin-bottom: 2rem;
+    ">
+        <h3 style="color:white;">Eau</h3>
+        <div id="div_water_chart" class="chart"></div>
+    </div>
+
+    <div style="
+    background-color: #03162E;
+    border-bottom:solid #004D87;
+    border-right:solid #004D87;
+    /*box-shadow: 10px 10px 10px 2px #384256;*/
+    border-radius: 8px;
+    padding:1rem;
+    margin-bottom: 2rem;
+    ">
+        <h3 style="color:white;">Gaz</h3>
+        <div id="div_gaz_chart" class="chart"></div>
+    </div>
+
+    <div style="
+    background-color: #03162E;
+    border-bottom:solid #004D87;
+    border-right:solid #004D87;
+    /*box-shadow: 10px 10px 10px 2px #384256;*/
+    border-radius: 8px;
+    padding:1rem;
+    margin-bottom: 2rem;
+    ">
+        <h3 style="color:white;">Electricité</h3>
+        <div id="div_electricity_chart" class="chart"></div>
+    </div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw(waterBarBhart, 'div_water_chart') }}
+        {{ gc_draw(gazBarBhart, 'div_gaz_chart') }}
+        {{ gc_draw(electricityBarBhart, 'div_electricity_chart') }}
+    </script>
 </div>
+
 {% endblock %}

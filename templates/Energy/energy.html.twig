@@ -21,7 +21,7 @@
                 {% for ener in tableau_energies %}
                     <tr>
                         <td>{{ ener.year }}</td>
-                        <td>{{ ener.month }}</td>
+                        <td>{{ ener.getMonthName }}</td>
                         <td>{{ ener.electricityDay }}</td>
                         <td>{{ ener.electricityNight }}</td>
                         <td>{{ ener.gaz }}</td>

@@ -1,0 +1,5 @@
+#div_water_chart>div>div:nth-child(2){
+    padding: 5px;
+    margin:5px;
+    background-color: #718C00;
+}
