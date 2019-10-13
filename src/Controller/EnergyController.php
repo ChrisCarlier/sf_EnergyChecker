@@ -95,7 +95,9 @@ class EnergyController extends AbstractController{
     {
         $this->em->remove($energy);
         $this->em->flush();
-        $tabenergies = $this->getAllEnergies();
+        $tabenergies = $this->repository->findBy([
+            'year' => 2019
+        ]);
         return $this->render('/Energy/energy.html.twig',[
             'current_menu' => 'energies',
             'tableau_energies' => $tabenergies
