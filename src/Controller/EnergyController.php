@@ -29,7 +29,7 @@ class EnergyController extends AbstractController{
     }
 
     /**
-     * @Route("/EnergyData", name="ceciestuntest.index")
+     * @Route("/EnergyData", name="energy.index")
      * @return Response
      */
     public function index()
@@ -43,7 +43,7 @@ class EnergyController extends AbstractController{
     }
 
     /**
-     * @Route("/Energy/create", name="ceciestuntest.new", methods="GET|POST")
+     * @Route("/Energy/create", name="energy.new", methods="GET|POST")
      * @param Request $request
      * @return RedirectResponse|Response
      */
@@ -59,13 +59,13 @@ class EnergyController extends AbstractController{
         }
 
         return $this->render('energy/new.html.twig', [
-            'ceciestuntest' => $energy,
+            'energy' => $energy,
             'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/Energy/{id}", name="ceciestuntest.edit", methods="GET|POST")
+     * @Route("/Energy/{id}", name="energy.edit", methods="GET|POST")
      * @param Energy $energy
      * @param Request $request
      * @return RedirectResponse|Response
@@ -81,13 +81,13 @@ class EnergyController extends AbstractController{
         }
 
         return $this->render('energy/edit.html.twig', [
-            'ceciestuntest' => $energy,
+            'energy' => $energy,
             'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/Energy/{id}", name="ceciestuntest.delete", methods="DELETE")
+     * @Route("/Energy/{id}", name="energy.delete", methods="DELETE")
      * @param Energy $energy
      * @return Response
      */
