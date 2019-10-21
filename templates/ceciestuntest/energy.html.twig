@@ -27,10 +27,10 @@
                         <td>{{ ener.gaz }}</td>
                         <td>{{ ener.water }}</td>
                         <td>
-                            <a href="{{ path('energy.edit', {id: ener.id}) }}" class="btn btn-info">Modifier</a>
+                            <a href="{{ path('ceciestuntest.edit', {id: ener.id}) }}" class="btn btn-info">Modifier</a>
                         </td>
                         <td>
-                            <form method="POST" action="{{ path('energy.delete', {id: ener.id}) }}" onsubmit="return confirm('Supprimer ?')">
+                            <form method="POST" action="{{ path('ceciestuntest.delete', {id: ener.id}) }}" onsubmit="return confirm('Supprimer ?')">
                             <input type="hidden" name="_method" value="DELETE">
                             <button class="btn btn-danger">Supprimer</button>
                             </form>
@@ -41,7 +41,7 @@
         </table>
 
         <div class="text-right">
-            <a href="{{ path('energy.new') }}" class="btn btn-primary">Nouveau</a>
+            <a href="{{ path('ceciestuntest.new') }}" class="btn btn-primary">Nouveau</a>
         </div>
     </div>
 {% endblock %}
