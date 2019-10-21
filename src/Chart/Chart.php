@@ -96,7 +96,7 @@ class Chart
                         $currentValue2 = $newValue2;
                     }
                 }
-                dump($dataList);
+
                 break;
         }
         return $dataList;
