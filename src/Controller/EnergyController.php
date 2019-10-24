@@ -34,7 +34,7 @@ class EnergyController extends AbstractController{
      */
     public function index()
     {
-        return $this->render('/Energy/energy.html.twig',[
+        return $this->render('/energy/energy.html.twig',[
             'current_menu' => 'energies',
             'tableau_energies' => $this->repository->findBy([
                 'year' => 2019
