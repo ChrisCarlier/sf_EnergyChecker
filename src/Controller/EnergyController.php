@@ -29,7 +29,7 @@ class EnergyController extends AbstractController{
     }
 
     /**
-     * @Route("/EnergyData", name="energy.index")
+     * @Route("/Energy", name="energy.index")
      * @return Response
      */
     public function index()

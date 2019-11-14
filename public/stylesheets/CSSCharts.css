@@ -3,3 +3,33 @@
     margin:5px;
     background-color: #718C00;
 }
+
+label{
+    color: #5eb5e0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+th{
+    color: #5eb5e0;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}
+td{
+    color: #C9C9C9;
+    font-size: 14px;
+    text-align: center;
+}
+
+.graph{
+    background-color: #03162E;
+    border-bottom:solid #004D87;
+    border-right:solid #004D87;
+    border-radius: 8px;
+    padding:1rem;
+    margin-bottom: 2rem;
+}
+.graph>h3{
+    color: white;
+}

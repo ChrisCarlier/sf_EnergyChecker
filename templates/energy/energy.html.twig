@@ -27,12 +27,12 @@
                         <td>{{ ener.gaz }}</td>
                         <td>{{ ener.water }}</td>
                         <td>
-                            <a href="{{ path('energy.edit', {id: ener.id}) }}" class="btn btn-info">Modifier</a>
+                            <a href="{{ path('energy.edit', {id: ener.id}) }}" class="btn btn-sm btn-info">Modifier</a>
                         </td>
                         <td>
                             <form method="POST" action="{{ path('energy.delete', {id: ener.id}) }}" onsubmit="return confirm('Supprimer ?')">
                             <input type="hidden" name="_method" value="DELETE">
-                            <button class="btn btn-danger">Supprimer</button>
+                            <button class="btn btn-sm btn-danger">Supprimer</button>
                             </form>
                         </td>
                     </tr>
