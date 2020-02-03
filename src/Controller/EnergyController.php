@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Entity\Energy;
 use App\Form\EnergyType;
 use App\Repository\EnergyRepository;
+use Doctrine\ORM\Query;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
