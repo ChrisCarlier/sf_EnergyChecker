@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Chart\Chart;
 use App\Entity\Energy;
 use App\Form\EnergyType;
 use App\Repository\EnergyRepository;
@@ -105,6 +106,27 @@ class EnergyController extends AbstractController{
         return $this->render('/Energy/energy.html.twig',[
             'current_menu' => 'energies',
             'tableau_energies' => $tabenergies
+        ]);
+    }
+
+    /**
+     * @param Chart $chart
+     * @param Request $request
+     * @return Response
+     * @Route("/Charts", name="energy.charts")
+     */
+    public function chartPage(Chart $chart,Request $request)
+    {
+        $years = $this->repository->getYears();
+        $selectedYear = $request->query->get('year',$years[0]);
+
+        return $this->render('energy/charts.html.twig',[
+            'waterBarBhart' => $chart->waterChart($selectedYear),
+            'gazBarBhart' => $chart->gazChart($selectedYear),
+            'electricityBarBhart' => $chart->electricityChart($selectedYear),
+            'distinct_year' => $years,
+            'selected_year' => $selectedYear,
+            'current_menu' => 'charts',
         ]);
     }
 

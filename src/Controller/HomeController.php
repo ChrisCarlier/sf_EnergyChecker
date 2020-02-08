@@ -34,17 +34,8 @@ class HomeController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function index(Chart $chart,Request $request)
+    public function index()
     {
-        $years = $this->repository->getYears();
-        $selectedYear = $request->query->get('year',$years[0]);
-
-        return $this->render('pages/home.html.twig',[
-            'waterBarBhart' => $chart->waterChart($selectedYear),
-            'gazBarBhart' => $chart->gazChart($selectedYear),
-            'electricityBarBhart' => $chart->electricityChart($selectedYear),
-            'distinct_year' => $years,
-            'selected_year' => $selectedYear
-        ]);
+        return $this->render('pages/home.html.twig');
     }
 }

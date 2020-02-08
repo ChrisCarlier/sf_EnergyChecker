@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('stylesheets/CSSCharts.css') }}">
+        <link rel="icon" type="image/png" href="image/energy.ico" />
     {% endblock %}
 </head>
 
@@ -24,6 +25,10 @@
                 <li class="nav-item">
                     <a class="nav-link {% if current_menu is defined and current_menu == 'energies' %}active{% endif %} "
                         href="{{ path('energy.index') }}">Données</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if current_menu is defined and current_menu == 'current_menu' %}active{% endif %} "
+                       href="{{ path('energy.charts') }}">Graphiques</a>
                 </li>
             </ul>
         </div>

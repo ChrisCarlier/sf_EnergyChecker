@@ -27,6 +27,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/Energy, roles: ROLE_ADMIN }
+         - { path: ^/Charts, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
     encoders:
         App\Entity\User:
