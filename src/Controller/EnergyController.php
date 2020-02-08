@@ -24,7 +24,8 @@ class EnergyController extends AbstractController{
      */
     private $em;
 
-    public function __construct(EnergyRepository $repository, ObjectManager $em){
+    public function __construct(EnergyRepository $repository, ObjectManager $em)
+    {
         $this->repository = $repository;
         $this->em = $em;
     }
@@ -37,9 +38,10 @@ class EnergyController extends AbstractController{
     {
         return $this->render('/energy/energy.html.twig',[
             'current_menu' => 'energies',
-            'tableau_energies' => $this->repository->findBy([
-                'year' => 2019
-            ])
+//            'tableau_energies' => $this->repository->findBy([
+//                'year' => 2019
+//            ])
+            'tableau_energies' => $this->repository->findAll()
         ]);
     }
 
@@ -48,7 +50,8 @@ class EnergyController extends AbstractController{
      * @param Request $request
      * @return RedirectResponse|Response
      */
-    public function new(Request $request){
+    public function new(Request $request)
+    {
         $energy = new Energy();
         $form = $this->createForm(EnergyType::class, $energy);
         $form->handleRequest($request);

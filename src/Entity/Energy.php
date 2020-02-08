@@ -88,6 +88,17 @@ class Energy
         return self::MONTH[$this->getMonth()];
     }
 
+    public function getShortMonthNameWithYear(): string
+    {
+//        dump($this->getMonth() . ' ' . $this->getMonthName());
+        if($this->getMonth() == 11 or $this->getMonth() == 1) {
+            return substr($this->getMonthName(), 0, 4) . ' ' . substr($this->getYear(), 2, 2);
+        }
+        else{
+            return substr($this->getMonthName(), 0, 3) . ' ' . substr($this->getYear(), 2, 2);
+        }
+    }
+
     public function setMonth(int $month): self
     {
         $this->month = $month;

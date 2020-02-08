@@ -27,9 +27,10 @@ class Chart
         // Récupération de tous les records pour une année
         if ($year > 0)
         {
-            $DBData = $this->repo->findBy([
-                'year' => $year
-            ]);
+//            $DBData = $this->repo->findBy([
+//                'year' => $year
+//            ]);
+            $DBData = $this->repo->findByYear($year);
         }
         else
         {
@@ -50,7 +51,7 @@ class Chart
                     }
                     else
                     {
-                        $monthName = $energy->getMonthName();
+                        $monthName = $energy->getShortMonthNameWithYear();
                         $newValue = $energy->getWater();
                         $dataList[] = [$monthName,$newValue - $currentValue];
                         $currentValue = $newValue;
@@ -68,7 +69,7 @@ class Chart
                     }
                     else
                     {
-                        $monthName = $energy->getMonthName();
+                        $monthName = $energy->getShortMonthNameWithYear();
                         $newValue = $energy->getGaz();
                         $dataList[] = [$monthName,$newValue - $currentValue];
                         $currentValue = $newValue;
@@ -76,7 +77,7 @@ class Chart
                 }
                 break;
             case 'electricity' :
-                $dataList[] = ['Electricité','jour','Nuit'];
+                $dataList[] = ['Electricité','Jour','Nuit'];
                 $currentValue2 = 0;
                 foreach($DBData as $energy)
                 {
@@ -88,7 +89,7 @@ class Chart
                     }
                     else
                     {
-                        $monthName = $energy->getMonthName();
+                        $monthName = $energy->getShortMonthNameWithYear();
                         $newValue = $energy->getElectricityDay();
                         $newValue2 = $energy->getElectricityNight();
                         $dataList[] = [$monthName,$newValue - $currentValue,$newValue2 - $currentValue2];
@@ -123,7 +124,7 @@ class Chart
     public function waterChart(int $year)
     {
         // Récupération données Conso Eau
-        $list = $this->getDataByType('water',2019);
+        $list = $this->getDataByType('water',$year);
         // Initialisation graphique
         $bar = $this->initializeBarChart('Consommation Eau','m³','');
         // Application données au graphique
@@ -137,7 +138,7 @@ class Chart
     public function gazChart(int $year)
     {
         // Récupération données Conso Gaz
-        $list = $this->getDataByType('gaz',2019);
+        $list = $this->getDataByType('gaz',$year);
         // Initialisation graphique
         $bar = $this->initializeBarChart('Consommation Gaz','m³','');
         // Application données au graphique
@@ -151,7 +152,7 @@ class Chart
     public function electricityChart(int $year)
     {
         // Récupération données Conso Elect.
-        $list = $this->getDataByType('electricity',2019);
+        $list = $this->getDataByType('electricity',$year);
         // Initialisation graphique
         $bar = $this->initializeBarChart('Consommation Electricité','kWh');
         // Application données au graphique
